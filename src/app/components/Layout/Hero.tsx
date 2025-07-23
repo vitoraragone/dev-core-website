@@ -37,36 +37,29 @@ const containerVariants: Variants = {
   },
 };
 
-const Hero = () => {
-  const prefersReducedMotion = useReducedMotion();
-
-  const [videoVisible, setVideoVisible] = useState(false);
-  const heroRef = useRef<HTMLElement | null>(null);
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      setVideoVisible(true);
-      return;
+    const media = window.matchMedia(query);
+    setMatches(media.matches);
+
+    function listener(e: MediaQueryListEvent) {
+      setMatches(e.matches);
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVideoVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: "0px 0px -100px 0px" }
-    );
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, [query]);
 
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
+  return matches;
+}
 
-    return () => observer.disconnect();
-  }, [prefersReducedMotion]);
+const Hero = () => {
+  const isMdUp = useMediaQuery("(min-width: 768px)");
+  const prefersReducedMotion = useReducedMotion();
+
+  const heroRef = useRef<HTMLElement | null>(null);
 
   return (
     <section
@@ -77,19 +70,17 @@ const Hero = () => {
     >
       <IndicatorScroll />
 
-      {videoVisible && (
-        <div className="hidden md:block" aria-hidden="true">
-          <video
-            className="fixed top-0 left-0 w-full h-full object-cover z-[1]"
-            src="/assets/VzgT1sOS4ue9LJ42EAVxKEitdWo.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            tabIndex={-1}
-            preload="metadata"
-          />
-        </div>
+      {isMdUp && (
+        <video
+          className="fixed top-0 left-0 w-full h-full object-cover z-[1]"
+          src="/assets/VzgT1sOS4ue9LJ42EAVxKEitdWo.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          tabIndex={-1}
+          preload="metadata"
+        />
       )}
 
       <motion.div
