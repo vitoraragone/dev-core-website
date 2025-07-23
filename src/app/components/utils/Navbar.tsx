@@ -25,7 +25,9 @@ const Navbar = () => {
   return (
     <header className="fixed z-[9999] w-full bg-white/10 backdrop-blur-sm uppercase h-[70px] flex items-center">
       <div className="container mx-auto flex items-center justify-between px-4">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
 
         <nav className="hidden lg:flex gap-10 items-center">
           <ul className="flex gap-5 text-blue-950">

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ButtonLink from "../utils/ButtonLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +9,30 @@ import {
   faTools,
 } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { easeOut, motion, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: easeOut,
+      when: "beforeChildren",
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const Metodology = () => {
   interface Card {
@@ -43,29 +68,60 @@ const Metodology = () => {
   ];
 
   return (
-    <section className="pt-[70px] min-h-screen lg:h-screen relative lg:sticky top-0 z-3 bg-gradient-to-b from-slate-50 to-white">
-      <div className="h-full container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <section
+      id="metodology"
+      className="pt-[70px] min-h-screen lg:h-screen relative z-3 bg-gradient-to-b from-slate-50 to-white"
+      aria-label="Metodologia e processo de desenvolvimento"
+    >
+      <motion.div
+        className="h-full container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
         <div className="col-span-1 lg:col-span-5 text-center lg:text-start">
-          <h3 className="text-lg uppercase text-sky-600 drop-shadow-sm mb-1 tracking-wide">
+          <h3
+            className="text-lg uppercase text-sky-600 drop-shadow-sm mb-1 tracking-wide"
+            tabIndex={0}
+          >
             METODOLOGIA
           </h3>
-          <h4 className="text-3xl uppercase text-slate-700 leading-tight font-bold">
+          <h4
+            className="text-3xl uppercase text-slate-700 leading-tight font-bold"
+            tabIndex={0}
+          >
             Processo de desenvolvimento
           </h4>
 
-          <p className="max-w-[65ch] leading-tight mt-6 text-lg text-slate-800 mb-12 mx-auto md:mx-0">
+          <p
+            className="max-w-[65ch] leading-tight mt-6 text-lg text-slate-800 mb-12 mx-auto md:mx-0"
+            tabIndex={0}
+          >
             A gente entende o seu negócio, desenvolve tudo sob medida e te
             acompanha em cada etapa —{" "}
             <b>do planejamento ao suporte contínuo.</b>
           </p>
-          <ButtonLink>SOLICITAR PROPOSTA AGORA</ButtonLink>
+          <ButtonLink aria-label="Solicitar proposta agora">
+            SOLICITAR PROPOSTA AGORA
+          </ButtonLink>
         </div>
 
-        <ul className="col-span-1 lg:col-span-7 flex flex-wrap justify-around gap-y-10 px-4">
+        <motion.ul
+          className="col-span-1 lg:col-span-7 flex flex-wrap justify-around gap-y-10 px-4"
+          role="list"
+          aria-label="Etapas do processo de desenvolvimento"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0 }}
+        >
           {cards.map((card, index) => (
-            <li
+            <motion.li
               key={index}
-              className="flex flex-col items-start justify-between p-5 md:max-w-[300px] h-72 border border-sky-300 rounded-md  bg-slate-50 transition-colors duration-300 hover:bg-sky-50 hover:border-sky-400 hover:shadow-sm"
+              className="flex flex-col items-start justify-between p-5 md:max-w-[300px] h-72 border border-sky-300 rounded-md bg-slate-50 transition-colors duration-300 hover:bg-sky-50 hover:border-sky-400 hover:shadow-sm"
+              variants={cardVariants}
+              tabIndex={-1}
             >
               <FontAwesomeIcon
                 icon={card.icon}
@@ -75,24 +131,28 @@ const Metodology = () => {
                   padding: "8px",
                   borderRadius: "10%",
                   boxShadow: `
-                0 0 0 2px rgba(56, 189, 248, 0.4),
-                0 0 0 6px rgba(56, 189, 248, 0.2),
-                0 0 0 10px rgba(56, 189, 248, 0.1)
-              `,
+                    0 0 0 2px rgba(56, 189, 248, 0.4),
+                    0 0 0 6px rgba(56, 189, 248, 0.2),
+                    0 0 0 10px rgba(56, 189, 248, 0.1)
+                  `,
                 }}
+                aria-hidden="true"
               />
               <div className="min-h-[140px]">
-                <h2 className="text-2xl font-poppins uppercase text-sky-900 mb-2">
+                <h2
+                  className="text-2xl font-poppins uppercase text-sky-900 mb-2"
+                  tabIndex={0}
+                >
                   {card.title}
                 </h2>
                 <p className="text-sky-800 line-clamp-5 leading-tight">
                   {card.description}
                 </p>
               </div>
-            </li>
+            </motion.li>
           ))}
-        </ul>
-      </div>
+        </motion.ul>
+      </motion.div>
     </section>
   );
 };

@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGears, faBolt, faRocket } from "@fortawesome/free-solid-svg-icons";
+import { motion, Variants, easeOut } from "framer-motion";
 
 const cards = [
   {
@@ -23,11 +25,31 @@ const cards = [
   },
 ];
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.2,
+      ease: easeOut,
+    },
+  },
+};
+
 const Solutions = () => {
   return (
-    <section className="pt-[100px] lg:pt-[70px] min-h-screen relative z-20 bg-gradient-to-b from-slate-50 to-white flex flex-col">
+    <motion.section
+      id="solutions"
+      className="pt-[100px] lg:pt-[70px] min-h-screen relative z-20 bg-gradient-to-b from-slate-50 to-white flex flex-col"
+      aria-label="Seção de soluções pensadas para sua empresa"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
+    >
       <div className="container mx-auto px-4 flex flex-col flex-1 gap-20 justify-center">
-        <div className="text-center">
+        <div className="text-center" tabIndex={0}>
           <h3 className="text-4xl md:text-5xl uppercase text-sky-600 drop-shadow-sm mb-1 tracking-wide">
             Soluções pensadas em você
           </h3>
@@ -36,11 +58,17 @@ const Solutions = () => {
           </h4>
         </div>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center 0 backdrop-blur-md rounded-2xl p-8">
+        <ul
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center backdrop-blur-md rounded-2xl p-8"
+          role="list"
+          aria-label="Lista de soluções oferecidas"
+        >
           {cards.map((card, index) => (
-            <li
+            <motion.li
               key={index}
               className="flex flex-col items-start justify-between w-full max-w-[300px] h-auto border border-sky-300 rounded-xl bg-slate-50 p-6 transition-all duration-300 shadow hover:shadow-lg hover:border-sky-400 hover:scale-[1.015]"
+              role="listitem"
+              tabIndex={-1}
             >
               <FontAwesomeIcon
                 icon={card.icon}
@@ -55,18 +83,22 @@ const Solutions = () => {
                     0 0 0 10px rgba(56, 189, 248, 0.1)
                   `,
                 }}
+                aria-hidden="true"
               />
               <div>
-                <h2 className="text-xl font-poppins uppercase text-sky-900 py-3">
+                <h2
+                  className="text-xl font-poppins uppercase text-sky-900 py-3"
+                  tabIndex={0}
+                >
                   {card.title}
                 </h2>
                 <p className="text-sky-800 leading-tight">{card.description}</p>
               </div>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

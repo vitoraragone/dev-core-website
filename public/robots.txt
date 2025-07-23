@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.devcore.com.br
+
+# Sitemaps
+Sitemap: https://www.devcore.com.br/sitemap.xml

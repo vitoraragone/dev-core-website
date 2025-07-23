@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -20,36 +21,42 @@ const Footer = () => {
           <h5 className="uppercase font-semibold text-sky-500 mb-3">
             Navegação
           </h5>
-          <a
-            href="#home"
+          <Link
+            href="/"
             className="hover:text-sky-500 transition-colors duration-200 uppercase"
           >
             Início
-          </a>
-          <a
+          </Link>
+          <Link
             href="#services"
             className="hover:text-sky-500 transition-colors duration-200 uppercase"
           >
+            Serviços
+          </Link>
+          <Link
+            href="#metodology"
+            className="hover:text-sky-500 transition-colors duration-200 uppercase"
+          >
             Metodologia
-          </a>
-          <a
+          </Link>
+          <Link
             href="#about"
             className="hover:text-sky-500 transition-colors duration-200 uppercase"
           >
             Sobre Nós
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="#testimonials"
             className="hover:text-sky-500 transition-colors duration-200 uppercase"
           >
             Depoimentos
-          </a>
-          <a
+          </Link>
+          <Link
             href="#contact"
             className="hover:text-sky-500 transition-colors duration-200 uppercase"
           >
             Contato
-          </a>
+          </Link>
         </nav>
 
         <div className="flex flex-col space-y-0.5 text-sm text-slate-400">
