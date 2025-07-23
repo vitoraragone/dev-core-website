@@ -30,7 +30,7 @@ const Services = () => {
       className="md:pt-[70px] relative z-3 bg-gradient-to-b from-white to-slate-50"
       aria-label="Seção de serviços oferecidos pela DevCore"
     >
-      {/* marquee - sem motion */}
+      {/* marquee */}
       <div
         className="inset-shadow overflow-hidden whitespace-nowrap w-full"
         aria-hidden="true"
@@ -49,7 +49,6 @@ const Services = () => {
         </div>
       </div>
 
-      {/* services */}
       <motion.div
         className="container mx-auto mt-20 px-4"
         initial="hidden"
@@ -78,7 +77,6 @@ const Services = () => {
           variants={listVariants}
         >
           {[
-            // map para evitar repetição, mas aqui mantive fixo para clareza
             {
               title: "Desenvolvimento de Software",
               desc: "Criamos sites e sistemas personalizados, pensados para resolver os desafios específicos do seu negócio.",
@@ -111,7 +109,7 @@ const Services = () => {
                   width={300}
                   height={300}
                   alt={imgAlt}
-                  priority={idx === 0} // prioriza a primeira imagem
+                  loading="lazy"
                 />
               </div>
               <div className="px-4 py-8">
@@ -200,6 +198,7 @@ const Services = () => {
                 width={400}
                 height={400}
                 alt="Profissional trabalhando em um notebook"
+                loading="lazy"
               />
             </div>
           </div>

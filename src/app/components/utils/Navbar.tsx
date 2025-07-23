@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import ButtonLink from "./ButtonLink";
 import Logo from "./Logo";
 
 const Navbar = () => {
@@ -52,7 +51,12 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <ButtonLink>Contato</ButtonLink>
+          <Link
+            href="#contact"
+            className="bg-sky-600 text-white px-6 py-2 rounded-md hover:bg-sky-700 transition-all duration-200 font-semibold uppercase text-center"
+          >
+            Contato
+          </Link>
         </nav>
 
         <button
@@ -88,8 +92,15 @@ const Navbar = () => {
                 Depoimentos
               </Link>
             </li>
+            <li onClick={() => setOpen(false)}>
+              <Link
+                href="#contact"
+                className="bg-sky-600 text-white px-6 py-2 rounded-md hover:bg-sky-700 transition-all duration-200 font-semibold uppercase text-center"
+              >
+                Contato
+              </Link>
+            </li>
           </ul>
-          <ButtonLink>Contato</ButtonLink>
         </nav>
       </div>
     </header>

@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ["var(--font-lobster)", "cursive"],
         roboto: ["var(--font-roboto)", "sans-serif"],
         poppins: ["var(--font-poppins)", "sans-serif"],
       },

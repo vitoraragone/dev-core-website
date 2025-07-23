@@ -38,7 +38,7 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="pt-[100px] lg:pt-[70px] min-h-screen relative lg:sticky top-0 z-20 bg-gradient-to-b from-white to-slate-50 px-4 flex flex-col"
+      className="pt-[100px] lg:pt-[70px] min-h-screen relative z-20 bg-gradient-to-b from-white to-slate-50 px-4 flex flex-col"
       aria-label="Depoimentos reais de clientes da DevCore"
     >
       <div className="container mx-auto flex-1 flex items-center">

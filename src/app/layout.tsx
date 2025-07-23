@@ -1,20 +1,29 @@
 import type { Metadata, Viewport } from "next";
+
 import { Roboto } from "next/font/google";
-import "./globals.css";
-import Navbar from "./components/utils/Navbar";
-import LenisProvider from "./components/LenisProvider";
+
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+
+import "./globals.css";
+
+import Navbar from "./components/utils/Navbar";
+import LenisProvider from "./components/LenisProvider";
 import Footer from "./components/utils/Footer";
+
 config.autoAddCss = false;
 
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
   title: "Dev Core | Software House",
+  icons: {
+    icon: "/favicon.svg",
+  },
   description:
     "DevCore | Soluções digitais personalizadas em sites, sistemas, SEO e hospedagem. Consultoria estratégica para transformar sua presença online.",
   keywords: [
@@ -68,7 +77,7 @@ export const metadata: Metadata = {
     siteName: "Dev Core",
     images: [
       {
-        url: "https://devcore.com.br/og-image.jpg", // Substitua pela imagem real
+        url: "https://devcore.com.br/favicon.svg",
         width: 1200,
         height: 630,
         alt: "Dev Core - Soluções Digitais",

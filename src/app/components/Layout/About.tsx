@@ -91,7 +91,7 @@ const About = () => {
             width={400}
             height={400}
             alt="Equipe profissional da DevCore trabalhando"
-            priority
+            loading="lazy"
           />
         </motion.div>
       </motion.div>

@@ -15,11 +15,11 @@ const fadeInUp: Variants = {
 const Contact = () => {
   return (
     <section
+      id="contact"
       className="relative z-30 pt-[100px] lg:pt-[70px] min-h-screen flex items-center bg-gradient-to-b from-slate-50 to-white px-4"
       aria-labelledby="contact-heading"
     >
       <div className="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        {/* Bloco de texto */}
         <motion.div
           className="space-y-8 border-l-4 border-sky-500 pl-6 py-2"
           initial="hidden"
@@ -50,7 +50,6 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        {/* Formulário */}
         <motion.form
           onSubmit={(e) => e.preventDefault()}
           className="bg-white rounded-2xl shadow-xl px-8 py-10 border border-sky-100 w-full space-y-6"

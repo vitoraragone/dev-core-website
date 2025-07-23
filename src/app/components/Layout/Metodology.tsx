@@ -40,6 +40,7 @@ const Metodology = () => {
     description: string;
     icon: IconProp;
   }
+
   const cards: Card[] = [
     {
       title: "Requisitos",
@@ -50,7 +51,7 @@ const Metodology = () => {
     {
       title: "Prototipação",
       description:
-        "Analisamos as necessidades do seu negócio, entendendo desafios e demandas para garantir uma solução personalizada e eficaz.",
+        "Transformamos as ideias em protótipos navegáveis, permitindo validação rápida e ajustes antes da implementação final.",
       icon: faLaptopCode,
     },
     {
@@ -74,13 +75,13 @@ const Metodology = () => {
       aria-label="Metodologia e processo de desenvolvimento"
     >
       <motion.div
-        className="h-full container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+        className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}
       >
-        <div className="col-span-1 lg:col-span-5 text-center lg:text-start">
+        <div className="col-span-1 lg:col-span-5 text-center lg:text-left">
           <h3
             className="text-lg uppercase text-sky-600 drop-shadow-sm mb-1 tracking-wide"
             tabIndex={0}
@@ -95,26 +96,27 @@ const Metodology = () => {
           </h4>
 
           <p
-            className="max-w-[65ch] leading-tight mt-6 text-lg text-slate-800 mb-12 mx-auto md:mx-0"
+            className="max-w-[65ch] leading-tight mt-6 text-lg text-slate-800 mb-12 mx-auto lg:mx-0"
             tabIndex={0}
           >
             A gente entende o seu negócio, desenvolve tudo sob medida e te
             acompanha em cada etapa —{" "}
-            <b>do planejamento ao suporte contínuo.</b>
+            <strong>do planejamento ao suporte contínuo.</strong>
           </p>
+
           <ButtonLink aria-label="Solicitar proposta agora">
             SOLICITAR PROPOSTA AGORA
           </ButtonLink>
         </div>
 
         <motion.ul
-          className="col-span-1 lg:col-span-7 flex flex-wrap justify-around gap-y-10 px-4"
+          className="col-span-1 lg:col-span-7 grid sm:grid-cols-2 gap-8"
           role="list"
           aria-label="Etapas do processo de desenvolvimento"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           {cards.map((card, index) => (
             <motion.li
@@ -131,10 +133,10 @@ const Metodology = () => {
                   padding: "8px",
                   borderRadius: "10%",
                   boxShadow: `
-                    0 0 0 2px rgba(56, 189, 248, 0.4),
-                    0 0 0 6px rgba(56, 189, 248, 0.2),
-                    0 0 0 10px rgba(56, 189, 248, 0.1)
-                  `,
+        0 0 0 2px rgba(56, 189, 248, 0.4),
+        0 0 0 6px rgba(56, 189, 248, 0.2),
+        0 0 0 10px rgba(56, 189, 248, 0.1)
+      `,
                 }}
                 aria-hidden="true"
               />
